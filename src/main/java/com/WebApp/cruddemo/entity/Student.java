@@ -76,7 +76,7 @@ public class Student {
                 ", email='" + email + '\'' +
                 '}';
     }
-    public String ChecckGIT() {
+    public void checckGIT() {
         System.out.println("Check git cod ehere");
     }
 }

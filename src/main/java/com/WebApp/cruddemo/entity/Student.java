@@ -23,7 +23,7 @@ public class Student {
 
     //define constructor
     public Student() { //no arg con
-        System.out.println("Default constructor");
+        //System.out.println("Default constructor");
     }
 
     public Student(String firstName, String lastName, String email) {

@@ -22,13 +22,62 @@ public class CruddemoApplication {
 		return runner -> {
             //createStudent(studentDAO);
 
-            //createMultipleStudents(studentDAO);
+            createMultipleStudents(studentDAO);
 
             //readStudent(studentDAO);
 
-            queryForStudents(studentDAO);
+            //queryForStudents(studentDAO);
+
+            //queryForStudentsByLastName(studentDAO);
+
+            //updateStudent(studentDAO);
+
+            //deleteStudent(studentDAO);
+
+            //deleteAllStudents(studentDAO);
+
 		};
 	}
+
+    private void deleteAllStudents(StudentDAO studentDAO) {
+        System.out.println("Deleting all students: ");
+        int numRowsDeleted = studentDAO.deleteAll();
+        System.out.println("Deleted rows count: " + numRowsDeleted);
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+        // delete the student
+        int studentId = 15;
+        System.out.println("Deleting student id: " + studentId);
+        studentDAO.delete(studentId);
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        // retrive student based on the id: primary key
+        int studentId = 1;
+        System.out.println("Getting student with id: " + studentId);
+        Student theStudent = studentDAO.findByID(studentId);
+
+        // change first name to "whatever given"
+        System.out.println("Updating first name of Student");
+        theStudent.setFirstName("Jidnyasa");
+
+        // update the student
+        studentDAO.update(theStudent);
+
+        // display the updated student
+        System.out.println("Updated student: " + theStudent);
+    }
+
+    private void queryForStudentsByLastName(StudentDAO studentDAO) {
+        // get list of students
+        List<Student> theStudents=studentDAO.findByLastName("Chaudhari");
+
+        // display the list of students
+        for (Student tempStudent : theStudents) {
+            System.out.println(tempStudent);
+        }
+    }
 
     private void queryForStudents(StudentDAO studentDAO) {
         // get a list of students
